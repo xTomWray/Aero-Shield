@@ -1,0 +1,14 @@
+{
+  "name": "@aero-shield/api-client",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@aero-shield/domain": "workspace:*"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

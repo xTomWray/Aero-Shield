@@ -1,0 +1,19 @@
+{
+  "name": "@aero-shield/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@aero-shield/api-client": "workspace:*",
+    "@aero-shield/domain": "workspace:*",
+    "@aero-shield/mock-sim": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

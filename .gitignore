@@ -1,0 +1,32 @@
+# ── Dependencies & build output ────────────────────
+node_modules
+dist
+coverage
+.turbo
+
+# ── Test artifacts ──────────────────────────────────
+playwright-report
+test-results
+visual-artifacts
+
+# ── Environment ─────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── OS ──────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Python ──────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+
+# ── Claude Code / agentic tooling ───────────────────
+.codex
+.claude/
+AGENTS.md
+agents/
+commands/
+skills/

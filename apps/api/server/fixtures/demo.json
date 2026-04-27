@@ -1,0 +1,1262 @@
+[
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:00:00.000Z",
+    "sequence": 0,
+    "source_id": "uav_01",
+    "window_id": "w_0",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.14
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.053
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.073
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.059
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.057
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.048
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.112
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.042
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.062
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.049
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.047
+      },
+      {
+        "label": "normal",
+        "confidence": 0.51
+      }
+    ],
+    "top_label": "recon-discovery",
+    "top_confidence": 0.14,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:01:00.000Z",
+    "sequence": 1,
+    "source_id": "uav_01",
+    "window_id": "w_1",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.147
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.053
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.07
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.057
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.057
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.051
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.116
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.042
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.059
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.047
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.048
+      },
+      {
+        "label": "normal",
+        "confidence": 0.503
+      }
+    ],
+    "top_label": "recon-discovery",
+    "top_confidence": 0.147,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:02:00.000Z",
+    "sequence": 2,
+    "source_id": "uav_01",
+    "window_id": "w_2",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.148
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.05
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.066
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.057
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.06
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.053
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.115
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.039
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.056
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.048
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.051
+      },
+      {
+        "label": "normal",
+        "confidence": 0.502
+      }
+    ],
+    "top_label": "recon-discovery",
+    "top_confidence": 0.148,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:03:00.000Z",
+    "sequence": 3,
+    "source_id": "uav_01",
+    "window_id": "w_3",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.141
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.048
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.066
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.06
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.063
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.052
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.109
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.038
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.057
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.051
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.053
+      },
+      {
+        "label": "normal",
+        "confidence": 0.509
+      }
+    ],
+    "top_label": "recon-discovery",
+    "top_confidence": 0.141,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:04:00.000Z",
+    "sequence": 4,
+    "source_id": "uav_01",
+    "window_id": "w_4",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.134
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.047
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.069
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.063
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.063
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.05
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.104
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.038
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.061
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.053
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.052
+      },
+      {
+        "label": "normal",
+        "confidence": 0.516
+      }
+    ],
+    "top_label": "recon-discovery",
+    "top_confidence": 0.134,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:05:00.000Z",
+    "sequence": 5,
+    "source_id": "uav_01",
+    "window_id": "w_5",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.057
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.049
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.22
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.063
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.06
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.047
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.104
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.04
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.063
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.052
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.049
+      },
+      {
+        "label": "normal",
+        "confidence": 0.43
+      }
+    ],
+    "top_label": "injection-waypoint",
+    "top_confidence": 0.22,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:06:00.000Z",
+    "sequence": 6,
+    "source_id": "uav_01",
+    "window_id": "w_6",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.059
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.052
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.222
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.061
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.057
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.047
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.11
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.042
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.063
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.05
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.047
+      },
+      {
+        "label": "normal",
+        "confidence": 0.428
+      }
+    ],
+    "top_label": "injection-waypoint",
+    "top_confidence": 0.222,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:07:00.000Z",
+    "sequence": 7,
+    "source_id": "uav_01",
+    "window_id": "w_7",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.062
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.053
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.214
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.057
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.057
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.05
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.115
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.042
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.06
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.047
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.048
+      },
+      {
+        "label": "normal",
+        "confidence": 0.436
+      }
+    ],
+    "top_label": "injection-waypoint",
+    "top_confidence": 0.214,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:08:00.000Z",
+    "sequence": 8,
+    "source_id": "uav_01",
+    "window_id": "w_8",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.064
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.051
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.202
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.056
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.059
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.052
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.116
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.04
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.057
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.047
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.05
+      },
+      {
+        "label": "normal",
+        "confidence": 0.448
+      }
+    ],
+    "top_label": "injection-waypoint",
+    "top_confidence": 0.202,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:09:00.000Z",
+    "sequence": 9,
+    "source_id": "uav_01",
+    "window_id": "w_9",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.062
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.048
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.197
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.059
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.062
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.053
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.111
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.038
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.057
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.05
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.053
+      },
+      {
+        "label": "normal",
+        "confidence": 0.453
+      }
+    ],
+    "top_label": "injection-waypoint",
+    "top_confidence": 0.197,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:10:00.000Z",
+    "sequence": 10,
+    "source_id": "uav_01",
+    "window_id": "w_10",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.058
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.047
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.068
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.062
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.064
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.051
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.842
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.038
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.059
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.052
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.053
+      },
+      {
+        "label": "normal",
+        "confidence": 0.02
+      }
+    ],
+    "top_label": "flooding-camera",
+    "top_confidence": 0.842,
+    "threshold": 0.6,
+    "status": "alert"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:11:00.000Z",
+    "sequence": 11,
+    "source_id": "uav_01",
+    "window_id": "w_11",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.056
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.048
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.072
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.064
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.061
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.048
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.828
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.039
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.063
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.053
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.05
+      },
+      {
+        "label": "normal",
+        "confidence": 0.02
+      }
+    ],
+    "top_label": "flooding-camera",
+    "top_confidence": 0.828,
+    "threshold": 0.6,
+    "status": "alert"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:12:00.000Z",
+    "sequence": 12,
+    "source_id": "uav_01",
+    "window_id": "w_12",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.058
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.051
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.074
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.062
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.058
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.047
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.861
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.042
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.063
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.051
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.048
+      },
+      {
+        "label": "normal",
+        "confidence": 0.02
+      }
+    ],
+    "top_label": "flooding-camera",
+    "top_confidence": 0.861,
+    "threshold": 0.6,
+    "status": "alert"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:13:00.000Z",
+    "sequence": 13,
+    "source_id": "uav_01",
+    "window_id": "w_13",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.061
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.053
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.073
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.058
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.056
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.049
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.911
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.042
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.061
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.048
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.047
+      },
+      {
+        "label": "normal",
+        "confidence": 0.02
+      }
+    ],
+    "top_label": "flooding-camera",
+    "top_confidence": 0.911,
+    "threshold": 0.6,
+    "status": "alert"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:14:00.000Z",
+    "sequence": 14,
+    "source_id": "uav_01",
+    "window_id": "w_14",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.063
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.052
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.069
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.056
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.058
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.051
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.933
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.041
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.058
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.047
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.049
+      },
+      {
+        "label": "normal",
+        "confidence": 0.02
+      }
+    ],
+    "top_label": "flooding-camera",
+    "top_confidence": 0.933,
+    "threshold": 0.6,
+    "status": "alert"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:15:00.000Z",
+    "sequence": 15,
+    "source_id": "uav_01",
+    "window_id": "w_15",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.063
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.049
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.066
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.058
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.061
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.053
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.113
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.039
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.16
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.049
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.052
+      },
+      {
+        "label": "normal",
+        "confidence": 0.49
+      }
+    ],
+    "top_label": "exfil-log",
+    "top_confidence": 0.16,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:16:00.000Z",
+    "sequence": 16,
+    "source_id": "uav_01",
+    "window_id": "w_16",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.06
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.047
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.067
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.061
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.064
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.052
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.107
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.038
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.165
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.052
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.053
+      },
+      {
+        "label": "normal",
+        "confidence": 0.485
+      }
+    ],
+    "top_label": "exfil-log",
+    "top_confidence": 0.165,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:17:00.000Z",
+    "sequence": 17,
+    "source_id": "uav_01",
+    "window_id": "w_17",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.057
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.048
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.071
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.063
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.062
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.049
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.103
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.039
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.175
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.053
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.051
+      },
+      {
+        "label": "normal",
+        "confidence": 0.475
+      }
+    ],
+    "top_label": "exfil-log",
+    "top_confidence": 0.175,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:18:00.000Z",
+    "sequence": 18,
+    "source_id": "uav_01",
+    "window_id": "w_18",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.057
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.05
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.074
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.063
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.059
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.047
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.106
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.041
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.18
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.052
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.048
+      },
+      {
+        "label": "normal",
+        "confidence": 0.47
+      }
+    ],
+    "top_label": "exfil-log",
+    "top_confidence": 0.18,
+    "threshold": 0.6,
+    "status": "normal"
+  },
+  {
+    "type": "confidence_update",
+    "timestamp": "2026-04-22T12:19:00.000Z",
+    "sequence": 19,
+    "source_id": "uav_01",
+    "window_id": "w_19",
+    "model_id": "mavlink_ids_rf_v1",
+    "model_version": "1.0.0",
+    "predictions": [
+      {
+        "label": "recon-discovery",
+        "confidence": 0.06
+      },
+      {
+        "label": "recon-scan",
+        "confidence": 0.053
+      },
+      {
+        "label": "injection-waypoint",
+        "confidence": 0.073
+      },
+      {
+        "label": "injection-brute-force",
+        "confidence": 0.06
+      },
+      {
+        "label": "gps_spoofing",
+        "confidence": 0.057
+      },
+      {
+        "label": "replay_attack",
+        "confidence": 0.048
+      },
+      {
+        "label": "flooding-camera",
+        "confidence": 0.112
+      },
+      {
+        "label": "jamming-link",
+        "confidence": 0.042
+      },
+      {
+        "label": "exfil-log",
+        "confidence": 0.176
+      },
+      {
+        "label": "exfil-camera",
+        "confidence": 0.049
+      },
+      {
+        "label": "firmware-mod",
+        "confidence": 0.047
+      },
+      {
+        "label": "normal",
+        "confidence": 0.474
+      }
+    ],
+    "top_label": "exfil-log",
+    "top_confidence": 0.176,
+    "threshold": 0.6,
+    "status": "normal"
+  }
+]
