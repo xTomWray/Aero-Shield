@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Provides baseline attack categories and scenario-specific summary/confidence data.
+ *
+ * @module       mock-sim/fixtures
+ * @exports      baseStatus, baseCategories, summaryByScenario, confidenceBumpByScenario, timelineTrackOrder
+ * @dependsOn    @aero-shield/domain (AttackCategory, DashboardStatus, DashboardSummary, ScenarioId)
+ * @usedBy       ./generateSnapshot.ts
+ * @sideEffects  none
+ * @stability    stable
+ * @tests        no tests
+ */
+
 import type {
   AttackCategory,
   DashboardStatus,

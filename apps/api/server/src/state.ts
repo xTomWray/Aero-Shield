@@ -1,3 +1,15 @@
+/**
+ * @fileoverview In-memory simulation state: manages scenario ID, event history with 30s sliding window, and latest snapshot.
+ *
+ * @module       api-server/state
+ * @exports      SimState, state
+ * @dependsOn    @aero-shield/domain
+ * @usedBy       handlers.ts, demoReplay.ts
+ * @sideEffects  mutates in-memory history and snapshot; no persistence
+ * @stability    stable
+ * @tests        no tests
+ */
+
 import type { ScenarioId, ConfidenceUpdate, DemoSnapshot } from "@aero-shield/domain";
 
 const WINDOW_MS = 30_000;

@@ -1,4 +1,14 @@
 /**
+ * @fileoverview Maps IDS model label strings to Aero Shield attack category IDs, supporting exact and prefix matching.
+ *
+ * @module       domain/labelMap
+ * @exports      LABEL_CATEGORY_MAP, labelToCategory
+ * @dependsOn    none
+ * @usedBy       packages/domain/src/index.ts (re-export), apps/api/server/src/translator.ts
+ * @sideEffects  none — pure data and function
+ * @stability    stable
+ * @tests        no tests
+ *
  * Maps IDS model label strings to Aero Shield attack category IDs.
  *
  * Matching is exact-first, then prefix-based.

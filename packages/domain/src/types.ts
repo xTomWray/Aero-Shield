@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Core domain types and interfaces for drone threat detection dashboard and backend.
+ *
+ * @module       domain/types
+ * @exports      ScenarioId, TimelineIntensity, CategoryTone, DashboardStatus, DashboardSimulation, TimelineEvent, TimelineTrack, ThreatTimeline, AttackDetection, AttackCategory, SummaryHighlight, DashboardSummary, DemoSnapshot, ConfidenceUpdatePrediction, ConfidenceUpdate, DemoRuntimeState, ScenarioDescriptor
+ * @dependsOn    none
+ * @usedBy       packages/domain/src/index.ts (re-export), packages/domain/src/provider.ts, packages/domain/src/scenarios.ts, packages/domain/src/selectors.ts, all apps and packages
+ * @sideEffects  none — type definitions only
+ * @stability    stable
+ * @tests        no tests
+ */
+
 /** Unique identifier for a demo scenario. */
 export type ScenarioId = "baseline" | "storm-front" | "intrusion" | "recovery";
 

@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Loads fixture events from demo.json and replays them at configurable intervals, ingesting to state and broadcasting snapshots.
+ *
+ * @module       api-server/demoReplay
+ * @exports      startReplay, stopReplay
+ * @dependsOn    node:fs, node:path, node:url, @aero-shield/domain, translator, state, broadcast
+ * @usedBy       handlers.ts, index.ts
+ * @sideEffects  reads fixtures/demo.json, manages setInterval timer, mutates state, writes to broadcast
+ * @stability    stable
+ * @tests        no tests
+ */
+
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";

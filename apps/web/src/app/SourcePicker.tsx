@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Renders a modal dialog for switching between built-in demo and live API data sources.
+ *
+ * @module       web/source-picker
+ * @exports      SourcePicker
+ * @dependsOn    react
+ * @usedBy       App.tsx
+ * @sideEffects  none — pure component
+ * @stability    stable
+ * @tests        no tests
+ */
 import React from "react";
 
 interface SourcePickerProps {

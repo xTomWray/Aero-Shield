@@ -1,3 +1,19 @@
+/**
+ * @fileoverview Express server entry point with SSE heartbeat and SIGTERM cleanup contracts.
+ *
+ * @module       api-server/index
+ * @exports      app (implicitly via server.listen)
+ * @dependsOn    express, cors, fs, path, swagger-ui-express, js-yaml, handlers, demoReplay, broadcast
+ * @usedBy       entry point
+ * @sideEffects  reads PORT, CORS_ORIGIN, openapi.yaml env vars; starts HTTP server; manages heartbeat interval; registers SIGTERM handler
+ * @stability    stable
+ * @tests        no tests
+ *
+ * @invariants   SSE heartbeat interval runs every 15s (15_000 ms) to keep connections alive.
+ *               SIGTERM triggers graceful shutdown: stopReplay() then server.close().
+ *               Demo replay starts automatically on server boot and after POST /reset.
+ */
+
 import express from "express";
 import cors from "cors";
 import { readFileSync } from "fs";

@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Verifies selector behavior: getTopCategory and getDetectedAttackCount derive correct values from snapshots.
+ *
+ * @module       tests/domain/selectors
+ * @exports      none — vitest test file
+ * @dependsOn    vitest, ../src/selectors, ../src/types
+ * @usedBy       vitest run
+ * @sideEffects  none
+ * @stability    stable
+ * @tests        self
+ */
+
 import { describe, expect, it } from "vitest";
 
 import { getDetectedAttackCount, getTopCategory } from "../src/selectors";

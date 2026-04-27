@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Renders dashboard panels: header, simulation card, threat timeline, detection matrix, and summary stats.
+ *
+ * @module       web/dashboard
+ * @exports      DashboardHeader, SimulationCard, ThreatTimelinePanel, DetectionMatrix, SummaryStats
+ * @dependsOn    react, @aero-shield/domain
+ * @usedBy       App.tsx, dashboard.test.tsx
+ * @sideEffects  none — pure components
+ * @stability    stable
+ * @tests        dashboard.test.tsx
+ */
 import type {
   AttackCategory,
   DashboardSimulation,

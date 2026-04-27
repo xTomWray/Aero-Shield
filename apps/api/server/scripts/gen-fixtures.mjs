@@ -1,9 +1,13 @@
 /**
- * Generates ConfidenceUpdate fixture files for the demo replay engine.
- * Run: node scripts/gen-fixtures.mjs
+ * @fileoverview Generates ConfidenceUpdate fixture files for the demo replay engine.
  *
- * Output: apps/api/server/fixtures/{baseline,storm-front,intrusion,recovery}.json
- * Consumed by: apps/api/server/src/demoReplay.ts
+ * @module       api-server/scripts/gen-fixtures
+ * @exports      none — script
+ * @dependsOn    node:fs, node:path, node:url
+ * @usedBy       run manually: node apps/api/server/scripts/gen-fixtures.mjs
+ * @sideEffects  writes apps/api/server/fixtures/{baseline,storm-front,intrusion,recovery}.json
+ * @stability    stable
+ * @tests        no tests
  */
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";

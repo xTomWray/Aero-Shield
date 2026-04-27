@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Generates demo snapshots by evolving attack categories and timeline events based on scenario and tick.
+ *
+ * @module       mock-sim/generateSnapshot
+ * @exports      generateSnapshot, getScheduledAttacks, getScenarioCycleLength
+ * @dependsOn    @aero-shield/domain (AttackCategory, DemoSnapshot, ScenarioId, TimelineEvent, TimelineIntensity), ./fixtures
+ * @usedBy       ./scenarios.ts, ./mockProvider.ts, tests/generateSnapshot.test.ts
+ * @sideEffects  none
+ * @stability    stable
+ * @tests        tests/generateSnapshot.test.ts
+ */
+
 import type {
   AttackCategory,
   DemoSnapshot,
