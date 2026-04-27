@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Catalog of available demo scenarios for drone threat simulation environments.
+ *
+ * @module       domain/scenarios
+ * @exports      scenarioCatalog
+ * @dependsOn    ./types
+ * @usedBy       packages/domain/src/index.ts (re-export), apps/web/src/app/App.tsx
+ * @sideEffects  none — constant data only
+ * @stability    stable
+ * @tests        no tests
+ */
+
 import type { ScenarioDescriptor } from "./types.js";
 
 /**

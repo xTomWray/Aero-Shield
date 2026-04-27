@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Offline mock provider that simulates real-time attack demo snapshots using a timer.
+ *
+ * @module       mock-sim/mockProvider
+ * @exports      MockDemoProvider, MockDemoProviderOptions
+ * @dependsOn    @aero-shield/domain (DemoDataControls, DemoDataProvider, DemoRuntimeState, DemoSnapshot, ScenarioId), ./scenarios
+ * @usedBy       ../index.ts (re-export), apps/web/src/app/App.tsx, apps/web/src/app/App.test.tsx, tests/mockProvider.test.ts
+ * @sideEffects  browser — setInterval/clearInterval timers
+ * @stability    stable
+ * @tests        tests/mockProvider.test.ts
+ */
+
 import type {
   DemoDataControls,
   DemoDataProvider,

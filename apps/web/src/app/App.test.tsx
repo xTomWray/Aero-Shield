@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Verifies that AeroShieldApp renders the dashboard and updates state over time through provider subscriptions.
+ *
+ * @module       tests/web/App
+ * @exports      none — vitest test file
+ * @dependsOn    vitest, @testing-library/react, @aero-shield/mock-sim, ./App
+ * @usedBy       vitest run
+ * @sideEffects  none
+ * @stability    stable
+ * @tests        self
+ */
 import { MockDemoProvider } from "@aero-shield/mock-sim";
 import { render, screen } from "@testing-library/react";
 import { act } from "react";

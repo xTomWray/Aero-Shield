@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Express request handlers for snapshot retrieval, SSE stream setup, event ingestion, scenario reset, and demo replay control.
+ *
+ * @module       api-server/handlers
+ * @exports      getSnapshot, getStream, postIngest, postReset, stopReplayHandler
+ * @dependsOn    express, @aero-shield/domain, translator, state, broadcast, demoReplay
+ * @usedBy       index.ts
+ * @sideEffects  reads INGEST_API_KEY env var, writes to response objects, mutates state
+ * @stability    stable
+ * @tests        no tests
+ */
+
 import type { Request, Response } from "express";
 import type { ConfidenceUpdate } from "@aero-shield/domain";
 import { translateEvent } from "./translator.js";

@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Verifies MockDemoProvider behavior: timer-based snapshot emission, scenario switching, and speed/reset controls.
+ *
+ * @module       tests/mock-sim/mockProvider
+ * @exports      none — vitest test file
+ * @dependsOn    vitest, ../src/mockProvider
+ * @usedBy       vitest run
+ * @sideEffects  none
+ * @stability    stable
+ * @tests        self
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MockDemoProvider } from "../src/mockProvider";

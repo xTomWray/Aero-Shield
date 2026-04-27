@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Renders a collapsible control panel for demo simulation playback (play/pause, speed, reset).
+ *
+ * @module       web/demo-controls
+ * @exports      DemoControlSurface
+ * @dependsOn    react, @aero-shield/domain, ./demo-context
+ * @usedBy       App.tsx
+ * @sideEffects  none — pure component
+ * @stability    stable
+ * @tests        no tests
+ */
 import { isDemoDataControls } from "@aero-shield/domain";
 
 import { useDemoProvider } from "./demo-context";

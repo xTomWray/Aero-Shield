@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Subscribes to the API SSE stream and exposes snapshots as a DemoDataProvider.
+ *
+ * @module       api-client/index
+ * @exports      createApiDemoProvider, ApiDemoProviderOptions
+ * @dependsOn    @aero-shield/domain (DemoDataProvider, DemoSnapshot, ScenarioId), browser EventSource API
+ * @usedBy       apps/web/src/app/App.tsx
+ * @sideEffects  network — opens EventSource to /stream, POST to /reset
+ * @stability    stable
+ * @tests        no tests
+ */
+
 import type { DemoDataProvider, DemoSnapshot, ScenarioId } from "@aero-shield/domain";
 
 export interface ApiDemoProviderOptions {

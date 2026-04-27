@@ -1,4 +1,12 @@
-"""Spells TEST on the Aero Shield threat timeline.
+"""Sends synthetic ConfidenceUpdate payloads to POST /ingest for visual QA.
+
+@module       scripts/test-ingest
+@exports      none — script
+@dependsOn    stdlib urllib
+@usedBy       run manually: python scripts/test_ingest.py
+@sideEffects  network — POSTs to http://localhost:3000/ingest
+@stability    stable
+@tests        no tests — manual QA tool
 
 Strategy
 --------

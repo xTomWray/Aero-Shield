@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Provides React Context and hooks for accessing the DemoDataProvider and its snapshot state.
+ *
+ * @module       web/demo-context
+ * @exports      DemoProviderContextRoot, useDemoProvider, useDemoSnapshot
+ * @dependsOn    react, @aero-shield/domain
+ * @usedBy       App.tsx, DemoControlSurface.tsx
+ * @sideEffects  none — pure context and hooks
+ * @stability    stable
+ * @tests        no tests
+ */
 /* eslint-disable react-refresh/only-export-components */
 import type { DemoDataProvider } from "@aero-shield/domain";
 import { createContext, useContext, useSyncExternalStore } from "react";

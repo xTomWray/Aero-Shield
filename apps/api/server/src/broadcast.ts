@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Manages SSE client connections and broadcasts DemoSnapshot updates to all connected clients.
+ *
+ * @module       api-server/broadcast
+ * @exports      addClient, broadcast, heartbeat
+ * @dependsOn    express, @aero-shield/domain
+ * @usedBy       handlers.ts, demoReplay.ts, index.ts
+ * @sideEffects  mutates global clients Set, writes to response streams
+ * @stability    stable
+ * @tests        no tests (covered indirectly via handlers.test.ts)
+ */
+
 import type { Response } from "express";
 import type { DemoSnapshot } from "@aero-shield/domain";
 

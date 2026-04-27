@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Verifies dashboard components render timeline ticks, attack simulation states, and detection matrix data correctly.
+ *
+ * @module       tests/web/dashboard
+ * @exports      none — vitest test file
+ * @dependsOn    vitest, @testing-library/react, @aero-shield/mock-sim, ./dashboard
+ * @usedBy       vitest run
+ * @sideEffects  none
+ * @stability    stable
+ * @tests        self
+ */
 import { generateSnapshot } from "@aero-shield/mock-sim";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";

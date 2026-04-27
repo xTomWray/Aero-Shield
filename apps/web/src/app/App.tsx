@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Renders the top-level Aero Shield application with provider management and keyboard shortcuts.
+ *
+ * @module       web/app
+ * @exports      AeroShieldApp
+ * @dependsOn    react, @aero-shield/domain, @aero-shield/api-client, @aero-shield/mock-sim, ./dashboard, ./DemoControlSurface, ./SourcePicker, ./demo-context
+ * @usedBy       main.tsx, App.test.tsx
+ * @sideEffects  none — pure component (subscribes to context, manages provider lifecycle)
+ * @stability    stable
+ * @tests        App.test.tsx
+ */
 import { isDemoDataControls, scenarioCatalog } from "@aero-shield/domain";
 import type { DemoDataProvider } from "@aero-shield/domain";
 import { createApiDemoProvider } from "@aero-shield/api-client";

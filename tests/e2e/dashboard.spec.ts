@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Verifies Aero Shield dashboard renders and updates in real-time across device sizes.
+ *
+ * @module       tests/e2e/dashboard
+ * @exports      none — playwright spec
+ * @dependsOn    @playwright/test, running web app (http://localhost:5173)
+ * @usedBy       playwright test
+ * @sideEffects  network — drives a browser against http://localhost:5173
+ * @stability    stable
+ * @tests        self
+ */
+
 import { expect, test } from "@playwright/test";
 
 test("renders the Aero Shield dashboard on desktop and updates over time", async ({ page }) => {

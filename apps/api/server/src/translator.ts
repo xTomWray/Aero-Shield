@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Translates ConfidenceUpdate events and history into DemoSnapshot broadcasts with categories, timeline tracks, and summary analytics.
+ *
+ * @module       api-server/translator
+ * @exports      translateEvent
+ * @dependsOn    @aero-shield/domain
+ * @usedBy       handlers.ts, demoReplay.ts
+ * @sideEffects  none — pure transform function
+ * @stability    stable
+ * @tests        no tests (covered indirectly via handlers.test.ts)
+ */
+
 import type {
   ConfidenceUpdate,
   DemoSnapshot,

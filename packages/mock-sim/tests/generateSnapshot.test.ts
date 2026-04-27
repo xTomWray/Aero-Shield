@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Verifies snapshot generation logic: timeline centering, non-overlapping attack schedules, execution state alignment, and scenario cycling.
+ *
+ * @module       tests/mock-sim/generateSnapshot
+ * @exports      none — vitest test file
+ * @dependsOn    vitest, ../src/generateSnapshot
+ * @usedBy       vitest run
+ * @sideEffects  none
+ * @stability    stable
+ * @tests        self
+ */
+
 import { describe, expect, it } from "vitest";
 
 import { generateSnapshot, getScenarioCycleLength, getScheduledAttacks } from "../src/generateSnapshot";

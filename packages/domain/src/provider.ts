@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Defines provider contracts (DemoDataProvider, DemoDataControls) and type guards for snapshot delivery systems.
+ *
+ * @module       domain/provider
+ * @exports      DemoDataProvider, DemoDataControls, isDemoDataControls
+ * @dependsOn    ./types
+ * @usedBy       packages/domain/src/index.ts (re-export), packages/api-client/src/index.ts, apps/web/src/app/demo-context.tsx, apps/web/src/app/DemoControlSurface.tsx, apps/web/src/app/App.tsx, packages/mock-sim/src/mockProvider.ts
+ * @sideEffects  none — interface definitions and type guard only
+ * @stability    stable
+ * @tests        no tests
+ */
+
 import type { DemoRuntimeState, DemoSnapshot, ScenarioId } from "./types.js";
 
 /**

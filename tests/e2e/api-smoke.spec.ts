@@ -1,3 +1,15 @@
+/**
+ * @fileoverview Verifies SSE stream delivers real-time snapshot updates from the live API.
+ *
+ * @module       tests/e2e/api-smoke
+ * @exports      none — playwright spec
+ * @dependsOn    @playwright/test, running web app (http://localhost:5173), running API server (http://localhost:3000)
+ * @usedBy       playwright test
+ * @sideEffects  network — drives a browser against http://localhost:5173 and http://localhost:3000
+ * @stability    stable
+ * @tests        self
+ */
+
 import { expect, test } from "@playwright/test";
 
 test("SSE stream delivers snapshot updates from the live API", async ({ page }) => {
