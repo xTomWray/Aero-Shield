@@ -1,0 +1,283 @@
+openapi: 3.1.0
+info:
+  title: Aero Shield API
+  version: 0.1.0
+  description: |
+    Real-time drone IDS (Intrusion Detection System) threat feed API.
+
+    Stream live `ConfidenceUpdate` events via `POST /ingest` and subscribe to
+    processed `DemoSnapshot` updates over the Server-Sent Events endpoint at
+    `GET /stream`.
+
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+
+tags:
+  - name: data
+    description: Read processed threat snapshots
+  - name: ingest
+    description: Push raw IDS model output
+  - name: control
+    description: Manage demo replay playback
+
+paths:
+  /:
+    get:
+      summary: Health check
+      description: Returns server name and a list of all available endpoints.
+      operationId: getHealth
+      tags: [data]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:      { type: string, example: Aero Shield API }
+                  endpoints: { type: array, items: { type: string } }
+
+  /snapshot:
+    get:
+      summary: Current threat snapshot
+      description: Returns the latest processed `DemoSnapshot` as JSON.
+      operationId: getSnapshot
+      tags: [data]
+      responses:
+        "200":
+          description: Latest DemoSnapshot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DemoSnapshot"
+
+  /stream:
+    get:
+      summary: Live SSE threat stream
+      description: |
+        Server-Sent Events stream. Each event is named `snapshot` and carries a
+        JSON-serialised `DemoSnapshot` as its data payload.
+
+        Connect with `EventSource` or any SSE client:
+        ```js
+        const es = new EventSource("http://localhost:3000/stream");
+        es.addEventListener("snapshot", e => console.log(JSON.parse(e.data)));
+        ```
+      operationId: getStream
+      tags: [data]
+      responses:
+        "200":
+          description: SSE stream (text/event-stream)
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                example: "event: snapshot\ndata: {…}\n\n"
+
+  /ingest:
+    post:
+      summary: Push a live IDS detection event
+      description: |
+        Accepts a `ConfidenceUpdate` from an IDS model. The server translates it
+        into a `DemoSnapshot` and broadcasts it to all connected SSE clients.
+
+        The `predictions` array should contain every attack class the model
+        scored (not just those above threshold). The `top_label` / `top_confidence`
+        fields identify the single highest-confidence prediction.
+      operationId: postIngest
+      tags: [ingest]
+      security:
+        - bearerAuth: []
+        - {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConfidenceUpdate"
+            example:
+              type: confidence_update
+              timestamp: "2026-04-27T12:00:00.000Z"
+              sequence: 1
+              source_id: uav_01
+              window_id: w0001
+              model_id: mavlink_ids_rf_v1
+              model_version: "1.0.0"
+              top_label: gps-spoofing
+              top_confidence: 0.87
+              threshold: 0.6
+              status: alert
+              predictions:
+                - { label: gps-spoofing,                confidence: 0.87 }
+                - { label: altitude-spoofing,           confidence: 0.42 }
+                - { label: camera-feed-eavesdropping,   confidence: 0.21 }
+                - { label: firmware-decompile,          confidence: 0.08 }
+                - { label: companion-computer-discovery, confidence: 0.05 }
+                - { label: normal,                      confidence: 0.03 }
+      responses:
+        "204":
+          description: Event accepted
+        "400":
+          description: Invalid payload
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "401":
+          description: Missing or invalid Bearer token (only when INGEST_API_KEY is set)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /reset:
+    post:
+      summary: Restart demo replay
+      description: Resets internal state to the baseline scenario and restarts the demo replay loop.
+      operationId: postReset
+      tags: [control]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean, example: true }
+
+  /replay/stop:
+    post:
+      summary: Stop demo replay
+      description: Pauses the background demo replay loop without resetting state.
+      operationId: stopReplay
+      tags: [control]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean, example: true }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Set via `INGEST_API_KEY` environment variable. Only required on `POST /ingest` when the variable is configured.
+
+  schemas:
+    ConfidenceUpdate:
+      type: object
+      description: Raw IDS model output for a single detection window.
+      required:
+        - type
+        - timestamp
+        - sequence
+        - source_id
+        - window_id
+        - model_id
+        - model_version
+        - predictions
+        - top_label
+        - top_confidence
+        - threshold
+        - status
+      properties:
+        type:
+          type: string
+          enum: [confidence_update]
+          description: Fixed discriminator — must always be `"confidence_update"`.
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 UTC timestamp of the detection window. Used to position the event on the ±15 s threat timeline.
+          example: "2026-04-27T12:00:00.000Z"
+        sequence:
+          type: integer
+          minimum: 0
+          description: Monotonically increasing event counter used for ordering and deduplication.
+          example: 42
+        source_id:
+          type: string
+          description: UAV or sensor identifier.
+          example: uav_01
+        window_id:
+          type: string
+          description: Unique identifier for this detection window.
+          example: w0042
+        model_id:
+          type: string
+          description: IDS model that produced this output.
+          example: mavlink_ids_rf_v1
+        model_version:
+          type: string
+          description: Semantic version of the model.
+          example: "1.0.0"
+        predictions:
+          type: array
+          description: |
+            Full label probability distribution. Include every attack class the
+            model scored — this populates the Individual Attack Detection panel.
+            The special label `"normal"` is filtered out of category counts.
+          items:
+            $ref: "#/components/schemas/Prediction"
+          minItems: 1
+        top_label:
+          type: string
+          description: The label with the highest confidence. Determines which timeline row receives a bar.
+          example: gps-spoofing
+        top_confidence:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Confidence score for `top_label`. Controls bar intensity (≥0.8 high, ≥0.5 medium, <0.5 low).
+          example: 0.87
+        threshold:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Alert threshold. When `top_confidence >= threshold` the status should be `"alert"`.
+          example: 0.6
+        status:
+          type: string
+          enum: [normal, alert, warning]
+          description: Pre-computed system status derived from `top_confidence` vs `threshold`. Drives the dashboard alert banner.
+          example: alert
+
+    Prediction:
+      type: object
+      description: Confidence score for a single attack class.
+      required: [label, confidence]
+      properties:
+        label:
+          type: string
+          description: Attack label (e.g. `"gps-spoofing"`) or `"normal"`.
+          example: gps-spoofing
+        confidence:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Model confidence for this label (0.0–1.0). Displayed as a percentage in the UI.
+          example: 0.87
+
+    DemoSnapshot:
+      type: object
+      description: Processed snapshot broadcast to all SSE clients after each ingested event.
+      properties:
+        scenarioId: { type: string }
+        tick:       { type: integer }
+        generatedAt:
+          type: string
+          format: date-time
+
+    Error:
+      type: object
+      properties:
+        error: { type: string }

@@ -28,7 +28,10 @@ ui:
 #  GET  /snapshot        → current DemoSnapshot JSON
 #  GET  /stream          → SSE stream of snapshot events (used by the web UI)
 #  POST /ingest          → push a live ConfidenceUpdate event
-#  POST /reset          → restart demo replay from the beginning
+#  POST /reset           → restart demo replay from the beginning
+#  POST /replay/stop     → pause background demo replay
+#  GET  /docs            → Swagger UI interactive API docs
+#  GET  /openapi.json    → raw OpenAPI 3.1 spec (import into Postman/Insomnia)
 #  PORT env var overrides the default port 3000
 api:
 	corepack pnpm --filter @aero-shield/api-server start
