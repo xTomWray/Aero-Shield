@@ -11,7 +11,7 @@ export default defineConfig({
   webServer: [
     {
       command:
-        "COREPACK_HOME=/tmp/corepack corepack pnpm --filter @aero-shield/api-server start",
+        "COREPACK_HOME=/tmp/corepack CORS_ORIGIN=http://127.0.0.1:4174 corepack pnpm --filter @aero-shield/api-server start",
       url: "http://localhost:3000",
       reuseExistingServer: true,
       timeout: 30_000,

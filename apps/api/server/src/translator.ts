@@ -4,7 +4,7 @@
  * @module       api-server/translator
  * @exports      translateEvent
  * @dependsOn    @aero-shield/domain
- * @usedBy       handlers.ts, demoReplay.ts
+ * @usedBy       handlers.ts
  * @sideEffects  none — pure transform function
  * @stability    stable
  * @tests        no tests (covered indirectly via handlers.test.ts)

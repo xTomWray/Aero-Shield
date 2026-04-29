@@ -63,9 +63,9 @@ class ApiDemoProvider implements DemoDataProvider {
   private readonly baseUrl: string;
   private snapshot: DemoSnapshot = CONNECTING_SNAPSHOT;
   private readonly listeners = new Set<() => void>();
-  private eventSource: EventSource | null = null;
+  private eventSource: globalThis.EventSource | null = null;
   private running = false;
-  private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
+  private reconnectTimer: ReturnType<typeof globalThis.setTimeout> | null = null;
 
   constructor(options: ApiDemoProviderOptions) {
     this.baseUrl = options.baseUrl.replace(/\/$/, "");
@@ -94,8 +94,9 @@ class ApiDemoProvider implements DemoDataProvider {
     this.disconnect();
   }
 
-  setScenario(_id: ScenarioId): void {
-    fetch(`${this.baseUrl}/reset`, { method: "POST" }).catch(() => {});
+  setScenario(id: ScenarioId): void {
+    void id;
+    globalThis.fetch(`${this.baseUrl}/reset`, { method: "POST" }).catch(() => {});
     if (this.running) {
       this.disconnect();
       this.connect();
@@ -103,10 +104,10 @@ class ApiDemoProvider implements DemoDataProvider {
   }
 
   private connect(): void {
-    const es = new EventSource(`${this.baseUrl}/stream`);
+    const es = new globalThis.EventSource(`${this.baseUrl}/stream`);
     this.eventSource = es;
 
-    es.addEventListener("snapshot", (event: MessageEvent) => {
+    es.addEventListener("snapshot", (event: globalThis.MessageEvent) => {
       try {
         this.snapshot = JSON.parse(event.data) as DemoSnapshot;
         this.emit();
@@ -119,7 +120,7 @@ class ApiDemoProvider implements DemoDataProvider {
       es.close();
       this.eventSource = null;
       if (this.running) {
-        this.reconnectTimer = setTimeout(() => {
+        this.reconnectTimer = globalThis.setTimeout(() => {
           this.reconnectTimer = null;
           if (this.running) this.connect();
         }, RECONNECT_DELAY_MS);
@@ -134,7 +135,7 @@ class ApiDemoProvider implements DemoDataProvider {
 
   private cancelReconnect(): void {
     if (this.reconnectTimer) {
-      clearTimeout(this.reconnectTimer);
+      globalThis.clearTimeout(this.reconnectTimer);
       this.reconnectTimer = null;
     }
   }

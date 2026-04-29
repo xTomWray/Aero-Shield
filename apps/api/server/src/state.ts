@@ -4,7 +4,7 @@
  * @module       api-server/state
  * @exports      SimState, state
  * @dependsOn    @aero-shield/domain
- * @usedBy       handlers.ts, demoReplay.ts
+ * @usedBy       handlers.ts
  * @sideEffects  mutates in-memory history and snapshot; no persistence
  * @stability    stable
  * @tests        no tests

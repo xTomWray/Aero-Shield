@@ -1,4 +1,4 @@
-.PHONY: dev ui api api-watch \
+.PHONY: dev ui api api-watch stream \
         build lint typecheck test test-watch e2e e2e-api e2e-headed \
         verify install clean help
 
@@ -24,12 +24,11 @@ dev:
 ui:
 	VITE_API_BASE_URL=http://localhost:3000 corepack pnpm --filter @aero-shield/web dev
 
-## Start the API server (replays fixture files, accepts live POST /ingest)
+## Start the API server (accepts live POST /ingest, no built-in replay loop)
 #  GET  /snapshot        → current DemoSnapshot JSON
 #  GET  /stream          → SSE stream of snapshot events (used by the web UI)
 #  POST /ingest          → push a live ConfidenceUpdate event
-#  POST /reset           → restart demo replay from the beginning
-#  POST /replay/stop     → pause background demo replay
+#  POST /reset           → reset API state to baseline and clear history
 #  GET  /docs            → Swagger UI interactive API docs
 #  GET  /openapi.json    → raw OpenAPI 3.1 spec (import into Postman/Insomnia)
 #  PORT env var overrides the default port 3000
@@ -39,6 +38,10 @@ api:
 ## Start the API server with hot-reload (watches src/ for changes)
 api-watch:
 	corepack pnpm --filter @aero-shield/api-server dev
+
+## Replay the saved demo file through POST /ingest against the live API
+stream:
+	python3 scripts/stream_run.py data/runs/demo.json
 
 # ──────────────────────────────────────────────
 # Build & Quality

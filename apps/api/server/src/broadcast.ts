@@ -4,7 +4,7 @@
  * @module       api-server/broadcast
  * @exports      addClient, broadcast, heartbeat
  * @dependsOn    express, @aero-shield/domain
- * @usedBy       handlers.ts, demoReplay.ts, index.ts
+ * @usedBy       handlers.ts, index.ts
  * @sideEffects  mutates global clients Set, writes to response streams
  * @stability    stable
  * @tests        no tests (covered indirectly via handlers.test.ts)

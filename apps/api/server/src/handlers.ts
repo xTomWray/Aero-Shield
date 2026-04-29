@@ -1,9 +1,9 @@
 /**
- * @fileoverview Express request handlers for snapshot retrieval, SSE stream setup, event ingestion, scenario reset, and demo replay control.
+ * @fileoverview Express request handlers for snapshot retrieval, SSE stream setup, event ingestion, and scenario reset.
  *
  * @module       api-server/handlers
- * @exports      getSnapshot, getStream, postIngest, postReset, stopReplayHandler
- * @dependsOn    express, @aero-shield/domain, translator, state, broadcast, demoReplay
+ * @exports      getSnapshot, getStream, postIngest, postReset
+ * @dependsOn    express, @aero-shield/domain, translator, state, broadcast
  * @usedBy       index.ts
  * @sideEffects  reads INGEST_API_KEY env var, writes to response objects, mutates state
  * @stability    stable
@@ -15,9 +15,8 @@ import type { ConfidenceUpdate } from "@aero-shield/domain";
 import { translateEvent } from "./translator.js";
 import { state } from "./state.js";
 import { addClient, broadcast } from "./broadcast.js";
-import { stopReplay } from "./demoReplay.js";
 
-const INGEST_API_KEY = process.env["INGEST_API_KEY"];
+const INGEST_API_KEY = globalThis.process.env["INGEST_API_KEY"];
 
 export const getSnapshot = (_req: Request, res: Response): void => {
   res.json(state.getSnapshot());
@@ -59,10 +58,5 @@ export const postIngest = (req: Request, res: Response): void => {
 
 export const postReset = (_req: Request, res: Response): void => {
   state.setScenario("baseline");
-  res.json({ ok: true });
-};
-
-export const stopReplayHandler = (_req: Request, res: Response): void => {
-  stopReplay();
   res.json({ ok: true });
 };
