@@ -3,9 +3,9 @@
  *
  * @module       tests/e2e/api-smoke
  * @exports      none — playwright spec
- * @dependsOn    @playwright/test, running web app (http://localhost:5173), running API server (http://localhost:3000)
+ * @dependsOn    @playwright/test, Playwright API config web servers
  * @usedBy       playwright test
- * @sideEffects  network — drives a browser against http://localhost:5173 and http://localhost:3000
+ * @sideEffects  network — drives a browser against the dedicated Playwright web app and API server
  * @stability    stable
  * @tests        self
  */
@@ -24,7 +24,7 @@ test("SSE stream delivers snapshot updates from the live API", async ({ page, re
 
   const initial = await page.getByTestId("generated-at").textContent();
 
-  const response = await request.post("http://localhost:3000/ingest", {
+  const response = await request.post("http://127.0.0.1:1339/ingest", {
     data: {
       type: "confidence_update",
       timestamp: new Date().toISOString(),
@@ -56,5 +56,5 @@ test("SSE stream delivers snapshot updates from the live API", async ({ page, re
 
 test("header shows the live API as the active source", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByText("Source: API: http://localhost:3000")).toBeVisible();
+  await expect(page.getByText("Source: API: http://127.0.0.1:1339")).toBeVisible();
 });

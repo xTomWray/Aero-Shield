@@ -11,16 +11,16 @@ export default defineConfig({
   webServer: [
     {
       command:
-        "COREPACK_HOME=/tmp/corepack CORS_ORIGIN=http://127.0.0.1:4174 corepack pnpm --filter @aero-shield/api-server start",
-      url: "http://localhost:3000",
-      reuseExistingServer: true,
+        "COREPACK_HOME=/tmp/corepack PORT=1339 CORS_ORIGIN=http://127.0.0.1:4174 corepack pnpm --filter @aero-shield/api-server start",
+      url: "http://127.0.0.1:1339",
+      reuseExistingServer: false,
       timeout: 30_000,
     },
     {
       command:
-        "COREPACK_HOME=/tmp/corepack VITE_API_BASE_URL=http://localhost:3000 corepack pnpm --filter @aero-shield/web exec vite --host 127.0.0.1 --port 4174",
+        "COREPACK_HOME=/tmp/corepack VITE_API_BASE_URL=http://127.0.0.1:1339 corepack pnpm --filter @aero-shield/web exec vite --host 127.0.0.1 --port 4174",
       url: "http://127.0.0.1:4174",
-      reuseExistingServer: true,
+      reuseExistingServer: false,
       timeout: 60_000,
     },
   ],
