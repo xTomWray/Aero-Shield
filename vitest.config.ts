@@ -7,6 +7,7 @@ export default mergeConfig(
     test: {
       include: [
         "packages/domain/tests/**/*.test.ts",
+        "packages/api-client/tests/**/*.test.ts",
         "packages/mock-sim/tests/**/*.test.ts",
         "apps/web/src/**/*.test.tsx"
       ]

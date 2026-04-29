@@ -5,9 +5,9 @@
  * @exports      createApiDemoProvider, ApiDemoProviderOptions
  * @dependsOn    @aero-shield/domain (DemoDataProvider, DemoSnapshot, ScenarioId), browser EventSource API
  * @usedBy       apps/web/src/app/App.tsx
- * @sideEffects  network — opens EventSource to /stream, POST to /reset
+ * @sideEffects  network — opens EventSource to /stream, GET to /snapshot, POST to /reset
  * @stability    stable
- * @tests        no tests
+ * @tests        ../tests/apiClient.test.ts
  */
 
 import type { DemoDataProvider, DemoSnapshot, ScenarioId } from "@aero-shield/domain";
@@ -66,6 +66,7 @@ class ApiDemoProvider implements DemoDataProvider {
   private eventSource: globalThis.EventSource | null = null;
   private running = false;
   private reconnectTimer: ReturnType<typeof globalThis.setTimeout> | null = null;
+  private lifecycleId = 0;
 
   constructor(options: ApiDemoProviderOptions) {
     this.baseUrl = options.baseUrl.replace(/\/$/, "");
@@ -85,11 +86,14 @@ class ApiDemoProvider implements DemoDataProvider {
   start(): void {
     if (this.running) return;
     this.running = true;
-    this.connect();
+    const lifecycleId = ++this.lifecycleId;
+    this.connect(lifecycleId);
+    void this.hydrateSnapshot(lifecycleId);
   }
 
   stop(): void {
     this.running = false;
+    this.lifecycleId += 1;
     this.cancelReconnect();
     this.disconnect();
   }
@@ -99,15 +103,17 @@ class ApiDemoProvider implements DemoDataProvider {
     globalThis.fetch(`${this.baseUrl}/reset`, { method: "POST" }).catch(() => {});
     if (this.running) {
       this.disconnect();
-      this.connect();
+      const lifecycleId = ++this.lifecycleId;
+      this.connect(lifecycleId);
     }
   }
 
-  private connect(): void {
+  private connect(lifecycleId: number): void {
     const es = new globalThis.EventSource(`${this.baseUrl}/stream`);
     this.eventSource = es;
 
     es.addEventListener("snapshot", (event: globalThis.MessageEvent) => {
+      if (!this.isActiveLifecycle(lifecycleId) || this.eventSource !== es) return;
       try {
         this.snapshot = JSON.parse(event.data) as DemoSnapshot;
         this.emit();
@@ -117,15 +123,33 @@ class ApiDemoProvider implements DemoDataProvider {
     });
 
     es.onerror = () => {
+      if (this.eventSource !== es) return;
       es.close();
       this.eventSource = null;
       if (this.running) {
         this.reconnectTimer = globalThis.setTimeout(() => {
           this.reconnectTimer = null;
-          if (this.running) this.connect();
+          if (this.isActiveLifecycle(lifecycleId)) {
+            this.connect(lifecycleId);
+          }
         }, RECONNECT_DELAY_MS);
       }
     };
+  }
+
+  private async hydrateSnapshot(lifecycleId: number): Promise<void> {
+    try {
+      const response = await globalThis.fetch(`${this.baseUrl}/snapshot`);
+      if (!response.ok) return;
+
+      const snapshot = (await response.json()) as DemoSnapshot;
+      if (!this.isActiveLifecycle(lifecycleId)) return;
+
+      this.snapshot = snapshot;
+      this.emit();
+    } catch {
+      // Best-effort hydration — wait for SSE if the initial snapshot fetch fails.
+    }
   }
 
   private disconnect(): void {
@@ -142,6 +166,10 @@ class ApiDemoProvider implements DemoDataProvider {
 
   private emit(): void {
     for (const listener of this.listeners) listener();
+  }
+
+  private isActiveLifecycle(lifecycleId: number): boolean {
+    return this.running && this.lifecycleId === lifecycleId;
   }
 }
 

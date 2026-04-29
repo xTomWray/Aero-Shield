@@ -1,38 +1,37 @@
 # Aero Shield
 
-This is the Aero Shield repo. It contains the shipping dashboard UI, the live API surface, and local demo tooling for replaying saved runs through the API.
+Aero Shield is a monorepo for a drone-threat dashboard and its live API path. It provides a UI for rendering intrusion-detection confidence percentages and threat simulation timeline views, plus an endpoint surface for ingesting confidence updates and streaming dashboard state.
 
-## Repo layout
+## What’s Here
 
 - `apps/web` is the shipping dashboard UI.
-- `apps/api/server` exposes the ingest + SSE API used by the live dashboard path.
-- `apps/api/examplesim` owns the deterministic example snapshot source used by the built-in mock provider.
-- `packages/domain` contains the shared provider contract and dashboard snapshot types.
-- `packages/mock-sim` wraps the example snapshot source in a provider that powers the built-in demo mode.
+- `apps/api/server` exposes the live API for snapshot reads, SSE updates, and ingest.
+- `packages/domain` defines the shared snapshot types and provider contract.
+- `packages/mock-sim` powers the built-in local demo mode.
+- `packages/api-client` adapts the web app to the live API path.
 
-## Local run
+## Run Locally
 
 From the repo root:
 
 ```bash
-cd "/home/tom/code/Aero Shield"
-make api
-make ui
-make stream
+make dev
 ```
 
-Useful targets:
+Useful commands:
 
-- `make dev`
-- `make api`
-- `make ui`
-- `make stream`
-- `make build`
-- `make test`
-- `make e2e`
+- `make api` starts the API server.
+- `make ui` starts the web UI against the local API.
+- `make stream` replays the saved demo run through `POST /ingest`.
+- `make verify` runs lint, typecheck, tests, and build.
 
-## Backend replacement seam
+## API Surface
 
-The web app depends on the provider contract in `packages/domain`. Local API demos now work by replaying saved `ConfidenceUpdate` files from `data/runs/` through `POST /ingest`, while the built-in mock provider remains available for offline UI work.
+- `GET /snapshot` returns the current dashboard snapshot.
+- `GET /stream` streams snapshot updates over SSE.
+- `POST /ingest` accepts live confidence updates.
 
-As long as the `DemoSnapshot` shape in `packages/domain/src/types.ts` stays stable, the dashboard UI can remain unchanged.
+## Docs
+
+- `docs/ARCHITECTURE.md`
+- `docs/INTEGRATION.md`
