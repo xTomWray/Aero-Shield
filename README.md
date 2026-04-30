@@ -2,6 +2,15 @@
 
 Aero Shield is a monorepo for a drone-threat dashboard and its live API path. It provides a UI for rendering intrusion-detection confidence percentages and threat simulation timeline views, plus an endpoint surface for ingesting confidence updates and streaming dashboard state.
 
+## Pulse Check
+
+![Aero Shield UI demo](assets/AeroShieldUIDemo.gif)
+
+1. Select source on the top left of the UI.
+2. Select built-in demo.
+
+The below output should now be seen. Confidence updates reflect the UI polling rate and API receive timing.
+
 ## What’s Here
 
 - `apps/web` is the shipping dashboard UI.
@@ -35,3 +44,7 @@ Useful commands:
 
 - `docs/ARCHITECTURE.md`
 - `docs/INTEGRATION.md`
+
+## License
+
+Apache-2.0. See `LICENSE`.
