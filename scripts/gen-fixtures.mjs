@@ -1,11 +1,11 @@
 /**
- * @fileoverview Generates ConfidenceUpdate fixture files for the demo replay engine.
+ * @fileoverview Generates ConfidenceUpdate fixture files for API replay.
  *
- * @module       api-server/scripts/gen-fixtures
+ * @module       scripts/gen-fixtures
  * @exports      none — script
  * @dependsOn    node:fs, node:path, node:url
- * @usedBy       run manually: node apps/api/server/scripts/gen-fixtures.mjs
- * @sideEffects  writes apps/api/server/fixtures/{baseline,storm-front,intrusion,recovery}.json
+ * @usedBy       run manually: node scripts/gen-fixtures.mjs
+ * @sideEffects  writes data/runs/{baseline,storm-front,intrusion,recovery}.json
  * @stability    stable
  * @tests        no tests
  */
@@ -14,7 +14,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dir = dirname(fileURLToPath(import.meta.url));
-const OUTPUT_DIR = join(__dir, "../fixtures");
+const OUTPUT_DIR = join(__dir, "../data/runs");
 
 mkdirSync(OUTPUT_DIR, { recursive: true });
 
@@ -44,76 +44,66 @@ const ATTACK_LABELS = [
   "firmware-mod",
 ];
 
-/**
- * Each label has an "active" confidence (when it's the phase leader) and a
- * "background" confidence (when another attack is dominant). This prevents
- * high-confidence labels like flooding-camera from triggering alerts during
- * recon or injection phases.
- */
 const PROFILES = {
   baseline: {
-    "recon-discovery":    { active: 0.14, bg: 0.06 },
-    "recon-scan":         { active: 0.12, bg: 0.05 },
+    "recon-discovery": { active: 0.14, bg: 0.06 },
+    "recon-scan": { active: 0.12, bg: 0.05 },
     "injection-waypoint": { active: 0.21, bg: 0.07 },
     "injection-brute-force": { active: 0.15, bg: 0.06 },
-    gps_spoofing:         { active: 0.18, bg: 0.06 },
-    replay_attack:        { active: 0.12, bg: 0.05 },
-    "flooding-camera":    { active: 0.88, bg: 0.11 },
-    "jamming-link":       { active: 0.09, bg: 0.04 },
-    "exfil-log":          { active: 0.17, bg: 0.06 },
-    "exfil-camera":       { active: 0.14, bg: 0.05 },
-    "firmware-mod":       { active: 0.13, bg: 0.05 },
+    gps_spoofing: { active: 0.18, bg: 0.06 },
+    replay_attack: { active: 0.12, bg: 0.05 },
+    "flooding-camera": { active: 0.88, bg: 0.11 },
+    "jamming-link": { active: 0.09, bg: 0.04 },
+    "exfil-log": { active: 0.17, bg: 0.06 },
+    "exfil-camera": { active: 0.14, bg: 0.05 },
+    "firmware-mod": { active: 0.13, bg: 0.05 },
   },
   "storm-front": {
-    "recon-discovery":    { active: 0.11, bg: 0.05 },
-    "recon-scan":         { active: 0.09, bg: 0.04 },
+    "recon-discovery": { active: 0.11, bg: 0.05 },
+    "recon-scan": { active: 0.09, bg: 0.04 },
     "injection-waypoint": { active: 0.12, bg: 0.05 },
     "injection-brute-force": { active: 0.10, bg: 0.04 },
-    gps_spoofing:         { active: 0.22, bg: 0.08 },
-    replay_attack:        { active: 0.15, bg: 0.06 },
-    "flooding-camera":    { active: 0.82, bg: 0.10 },
-    "jamming-link":       { active: 0.11, bg: 0.04 },
-    "exfil-log":          { active: 0.15, bg: 0.06 },
-    "exfil-camera":       { active: 0.12, bg: 0.05 },
-    "firmware-mod":       { active: 0.10, bg: 0.04 },
+    gps_spoofing: { active: 0.22, bg: 0.08 },
+    replay_attack: { active: 0.15, bg: 0.06 },
+    "flooding-camera": { active: 0.82, bg: 0.10 },
+    "jamming-link": { active: 0.11, bg: 0.04 },
+    "exfil-log": { active: 0.15, bg: 0.06 },
+    "exfil-camera": { active: 0.12, bg: 0.05 },
+    "firmware-mod": { active: 0.10, bg: 0.04 },
   },
   intrusion: {
-    "recon-discovery":    { active: 0.18, bg: 0.07 },
-    "recon-scan":         { active: 0.15, bg: 0.06 },
+    "recon-discovery": { active: 0.18, bg: 0.07 },
+    "recon-scan": { active: 0.15, bg: 0.06 },
     "injection-waypoint": { active: 0.22, bg: 0.09 },
     "injection-brute-force": { active: 0.19, bg: 0.08 },
-    gps_spoofing:         { active: 0.16, bg: 0.06 },
-    replay_attack:        { active: 0.10, bg: 0.04 },
-    "flooding-camera":    { active: 0.91, bg: 0.12 },
-    "jamming-link":       { active: 0.08, bg: 0.03 },
-    "exfil-log":          { active: 0.14, bg: 0.05 },
-    "exfil-camera":       { active: 0.11, bg: 0.04 },
-    "firmware-mod":       { active: 0.11, bg: 0.04 },
+    gps_spoofing: { active: 0.16, bg: 0.06 },
+    replay_attack: { active: 0.10, bg: 0.04 },
+    "flooding-camera": { active: 0.91, bg: 0.12 },
+    "jamming-link": { active: 0.08, bg: 0.03 },
+    "exfil-log": { active: 0.14, bg: 0.05 },
+    "exfil-camera": { active: 0.11, bg: 0.04 },
+    "firmware-mod": { active: 0.11, bg: 0.04 },
   },
   recovery: {
-    "recon-discovery":    { active: 0.09, bg: 0.04 },
-    "recon-scan":         { active: 0.07, bg: 0.03 },
+    "recon-discovery": { active: 0.09, bg: 0.04 },
+    "recon-scan": { active: 0.07, bg: 0.03 },
     "injection-waypoint": { active: 0.10, bg: 0.04 },
     "injection-brute-force": { active: 0.08, bg: 0.03 },
-    gps_spoofing:         { active: 0.13, bg: 0.05 },
-    replay_attack:        { active: 0.09, bg: 0.04 },
-    "flooding-camera":    { active: 0.73, bg: 0.09 },
-    "jamming-link":       { active: 0.06, bg: 0.03 },
-    "exfil-log":          { active: 0.12, bg: 0.05 },
-    "exfil-camera":       { active: 0.10, bg: 0.04 },
-    "firmware-mod":       { active: 0.08, bg: 0.03 },
+    gps_spoofing: { active: 0.13, bg: 0.05 },
+    replay_attack: { active: 0.09, bg: 0.04 },
+    "flooding-camera": { active: 0.73, bg: 0.09 },
+    "jamming-link": { active: 0.06, bg: 0.03 },
+    "exfil-log": { active: 0.12, bg: 0.05 },
+    "exfil-camera": { active: 0.10, bg: 0.04 },
+    "firmware-mod": { active: 0.08, bg: 0.03 },
   },
 };
 
-/**
- * 20-event cycle: 4 phases × 5 events each.
- * Each phase makes one attack label the dominant signal.
- */
 const PHASE_CYCLE = [
-  "recon-discovery",    // events 0–4   (normal)
-  "injection-waypoint", // events 5–9   (normal)
-  "flooding-camera",    // events 10–14 (alert — conf ≥ 0.6)
-  "exfil-log",          // events 15–19 (normal)
+  "recon-discovery",
+  "injection-waypoint",
+  "flooding-camera",
+  "exfil-log",
 ];
 
 function round3(n) {
@@ -128,7 +118,6 @@ function buildPredictions(profile, phaseLabel, tick) {
     return { label, confidence: round3(Math.max(0.01, Math.min(0.99, base + variation))) };
   });
 
-  // Add normal: inversely proportional to top attack confidence
   const topConf = Math.max(...preds.map((p) => p.confidence));
   preds.push({ label: "normal", confidence: round3(Math.max(0.02, 0.65 - topConf)) });
 
@@ -175,5 +164,7 @@ for (const scenarioId of Object.keys(PROFILES)) {
   writeFileSync(outPath, JSON.stringify(fixtures, null, 2));
   const alerts = fixtures.filter((e) => e.status === "alert").length;
   const normals = fixtures.filter((e) => e.status === "normal").length;
-  console.log(`Generated ${scenarioId}.json — ${fixtures.length} events (${alerts} alert, ${normals} normal)`);
+  globalThis.console.log(
+    `Generated ${scenarioId}.json — ${fixtures.length} events (${alerts} alert, ${normals} normal)`,
+  );
 }

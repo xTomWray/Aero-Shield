@@ -16,6 +16,13 @@
 - The `Injection` category intentionally swaps its leading confidence between `companion-computer-web-ui-login-brute-force` and `waypoint-injection` during each replay cycle.
 - `packages/mock-sim` advances ticks on an interval and notifies subscribers.
 
+## Live API demo workflow
+
+- `apps/api/server` does not own a replay loop.
+- Saved API replay files live in `data/runs/` as `ConfidenceUpdate[]` payloads.
+- `scripts/stream_run.py` exercises `POST /ingest` by replaying one saved run file against a live API server.
+- The standard local live-demo flow is `make api`, `make ui`, then `make stream`.
+
 ## Demo controls
 
 - Scenario switch resets the timeline to tick `0`.

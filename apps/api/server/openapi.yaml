@@ -29,7 +29,7 @@ tags:
   - name: ingest
     description: Push raw IDS model output
   - name: control
-    description: Manage demo replay playback
+    description: Manage in-memory API state
 
 paths:
   /:
@@ -142,25 +142,9 @@ paths:
 
   /reset:
     post:
-      summary: Restart demo replay
-      description: Resets internal state to the baseline scenario and restarts the demo replay loop.
+      summary: Reset API state
+      description: Resets internal state to the baseline scenario and clears live event history. External producers must resume sending `/ingest` events.
       operationId: postReset
-      tags: [control]
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  ok: { type: boolean, example: true }
-
-  /replay/stop:
-    post:
-      summary: Stop demo replay
-      description: Pauses the background demo replay loop without resetting state.
-      operationId: stopReplay
       tags: [control]
       responses:
         "200":

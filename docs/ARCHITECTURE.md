@@ -19,4 +19,4 @@
 
 ## Backend path
 
-The future backend should expose data that can be adapted into `DemoSnapshot`. When the API is ready, `apps/web` can replace the simulator with an implementation from `packages/api-client` without restructuring the UI package or route composition.
+`apps/api/server` is the live ingest + SSE backend path. It accepts `ConfidenceUpdate` events over `POST /ingest`, translates them into `DemoSnapshot`, and broadcasts them over `/stream`. Saved runs in `data/runs/` can be replayed into that API externally via `scripts/stream_run.py`, while `packages/api-client` preserves the same provider surface used by the UI.

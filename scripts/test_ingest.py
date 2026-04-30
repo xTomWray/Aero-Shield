@@ -194,9 +194,6 @@ def main() -> None:
     print(f"Clock   : {CLOCK_HZ} Hz ({1000 // CLOCK_HZ} ms ticks)")
     print()
 
-    post("/replay/stop", {})
-    time.sleep(0.2)
-
     script_start_ms = int(time.time() * 1000)
     seq = 0
 
@@ -220,8 +217,7 @@ def main() -> None:
         seq += 1
         time.sleep(tick_ms / 1000)
 
-    print("TEST complete — restarting replay.")
-    post("/reset", {})
+    print("TEST complete.")
 
 
 if __name__ == "__main__":
