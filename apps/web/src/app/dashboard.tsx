@@ -134,27 +134,6 @@ export const SimulationCard = ({ simulation }: { simulation: DashboardSimulation
       <span className="chip-dot" aria-hidden="true" />
     </div>
     <div className="simulation-row">
-      <div className="signal-card">
-        <span className="signal-label">
-          {simulation.executionState === "active" ? "Executing attack" : "Queued attack"}
-        </span>
-        <div className="signal-line">
-          <span className="signal-chip signal-chip-danger">{simulation.mode}</span>
-          <strong className="signal-value">{simulation.injectedAttack}</strong>
-        </div>
-      </div>
-      <div className="signal-arrow" aria-hidden="true">
-        →
-      </div>
-      <div className="signal-card signal-card-detected">
-        <span className="signal-label">
-          {simulation.executionState === "active" ? "System detected" : "Next predicted"}
-        </span>
-        <div className="signal-line">
-          <span className="signal-chip signal-chip-danger">{simulation.mode}</span>
-          <strong className="signal-value">{simulation.detectedAttack}</strong>
-        </div>
-      </div>
       <div className="confidence-card">
         <span className="signal-label">Confidence</span>
         <strong>{simulation.confidence}%</strong>
@@ -170,6 +149,27 @@ export const SimulationCard = ({ simulation }: { simulation: DashboardSimulation
       >
         <MatchIcon />
         <span>{simulation.detectionState}</span>
+      </div>
+      <div className="signal-card signal-card-detected">
+        <span className="signal-label">
+          {simulation.executionState === "active" ? "System detected" : "Next predicted"}
+        </span>
+        <div className="signal-line">
+          <span className="signal-chip signal-chip-danger">{simulation.mode}</span>
+          <strong className="signal-value">{simulation.detectedAttack}</strong>
+        </div>
+      </div>
+      <div className="signal-arrow" aria-hidden="true">
+        ←
+      </div>
+      <div className="signal-card">
+        <span className="signal-label">
+          {simulation.executionState === "active" ? "Executing attack" : "Queued attack"}
+        </span>
+        <div className="signal-line">
+          <span className="signal-chip signal-chip-danger">{simulation.mode}</span>
+          <strong className="signal-value">{simulation.injectedAttack}</strong>
+        </div>
       </div>
     </div>
   </section>

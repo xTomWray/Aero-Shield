@@ -28,6 +28,26 @@ const getInjectionLeader = () => {
   };
 };
 
+const expectSimulationRowOrder = (
+  container: HTMLElement,
+  labels: {
+    detectionState: string;
+    detectedLabel: string;
+    injectedLabel: string;
+  }
+) => {
+  const rowText = container.querySelector(".simulation-row")?.textContent ?? "";
+  const confidenceIndex = rowText.indexOf("Confidence");
+  const detectionStateIndex = rowText.indexOf(labels.detectionState);
+  const detectedIndex = rowText.indexOf(labels.detectedLabel);
+  const injectedIndex = rowText.indexOf(labels.injectedLabel);
+
+  expect(confidenceIndex).toBeGreaterThanOrEqual(0);
+  expect(detectionStateIndex).toBeGreaterThan(confidenceIndex);
+  expect(detectedIndex).toBeGreaterThan(detectionStateIndex);
+  expect(injectedIndex).toBeGreaterThan(detectedIndex);
+};
+
 describe("dashboard components", () => {
   it("renders the centered timeline labels and shows queued future attacks", () => {
     const snapshot = generateSnapshot("baseline", 0);
@@ -70,19 +90,29 @@ describe("dashboard components", () => {
 
     timelineRender.unmount();
 
-    render(<SimulationCard simulation={snapshot.simulation} />);
+    const simulationRender = render(<SimulationCard simulation={snapshot.simulation} />);
     expect(screen.getByText("Executing attack")).toBeInTheDocument();
     expect(screen.getByText("Match")).toBeInTheDocument();
+    expectSimulationRowOrder(simulationRender.container, {
+      detectionState: "Match",
+      detectedLabel: "System detected",
+      injectedLabel: "Executing attack"
+    });
   });
 
   it("shows queued attack state when Now falls between scheduled attacks", () => {
     const snapshot = generateSnapshot("baseline", 6);
 
-    render(<SimulationCard simulation={snapshot.simulation} />);
+    const { container } = render(<SimulationCard simulation={snapshot.simulation} />);
 
     expect(screen.getByText("Queued attack")).toBeInTheDocument();
     expect(screen.getByText("Next predicted")).toBeInTheDocument();
     expect(screen.getByText("Queued")).toBeInTheDocument();
+    expectSimulationRowOrder(container, {
+      detectionState: "Queued",
+      detectedLabel: "Next predicted",
+      injectedLabel: "Queued attack"
+    });
   });
 
   it("shows different Injection leaders at different replay moments", () => {
